@@ -1,0 +1,42 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Directeur{% endblock %}
+
+{% block body %}
+{{ include('partiel/flash.html.twig') }}
+         <div class="mt-4" style="width:90%;margin-left:auto;margin-right:auto">
+                <h4 class="text-center mb-5">Information sur le Directeur de l'is-info !</h4>
+                <div class="w-100 d-flex gap-2 align-items-center">
+                    <img src="{{ vich_uploader_asset(directeur, 'FileImage') }}" class="w-25">
+                    <div class="w-75">
+                            {{ form_start(form) }}
+                        <div class="w-100 h-100 d-flex flex-column gap-3">
+                            <div class="d-flex justify-content-between">
+                                <div class="col-md-4">
+                                    {{ form_row(form.nom) }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ form_row(form.prenom) }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ form_row(form.FileImage) }}
+                                </div> 
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="col-md-12">
+                                    {{ form_row(form.motdirecteur) }}
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between">
+                                
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-success">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+                {{ form_end(form) }}
+                    </div>                
+               </div>
+            </div>
+{% endblock %}

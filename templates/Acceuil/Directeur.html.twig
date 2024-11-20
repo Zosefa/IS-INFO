@@ -1,0 +1,23 @@
+<div class="container-fluid py-5" id="acceuil"> 
+    <div class=" m-auto py-5">
+        <div class="row" style="width:95%;margin:auto">
+            <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="w-100 h-100 wow animated__animated animate__fadeInLeft" src="{{ vich_uploader_asset(directeur, 'FileImage') }}" style="object-fit: cover;" alt="Image du directeur">
+                </div>
+            </div>
+            <div class="col-lg-7 align-content-center">
+                <div class="section-title position-relative mb-4">
+                    <h3 class="display-6">Mot du Directeur</h3>
+                </div>
+                <p>
+                    
+                </p>
+                <h5 class="text-secondary fs-6">
+                    {{ directeur.motdirecteur }}
+                </h5>
+                <p style="font-weight: bold;">{{ directeur.nom }} {{ directeur.prenom }}</p>
+            </div>
+        </div>
+    </div>
+</div>

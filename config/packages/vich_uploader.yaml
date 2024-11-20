@@ -1,0 +1,29 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        institut:
+            uri_prefix: /images/institut
+            upload_destination: '%kernel.project_dir%/public/images/institut'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        evenement:
+            uri_prefix: /images/evenement
+            upload_destination: '%kernel.project_dir%/public/images/evenement'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        filiere:
+            uri_prefix: /images/filiere
+            upload_destination: '%kernel.project_dir%/public/images/filiere'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            
+        directeur:
+            uri_prefix: /images/directeur
+            upload_destination: '%kernel.project_dir%/public/images/directeur'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+        
+        carousel:
+            uri_prefix: /images/carousel
+            upload_destination: '%kernel.project_dir%/public/images/carousel'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+

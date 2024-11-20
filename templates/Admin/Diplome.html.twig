@@ -1,0 +1,77 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Diplome{% endblock %}
+
+{% block body %}
+{{ include('partiel/flash.html.twig') }}
+         <div class="mt-4" style="width:90%;margin-left:auto;margin-right:auto">
+                <h4 class="text-center mb-5">Ajouter Les Diplomes !</h4>
+                <div class="w-100">
+                {{ form_start(form) }}
+                        <div class="w-100 h-100 d-flex flex-column gap-3">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="col-md-5">
+                                    {{ form_row(form.NomDiplome) }}
+                                </div>
+                                <div class="col-md-5 ">
+                                    {{ form_row(form.categorie) }}
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-success">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+                {{ form_end(form) }}
+                </div>
+                 <div class="w-100 mt-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="border text-center">Diplome</th>
+                                <th class="border text-center">categorie</th>
+                                <th class="border text-center">action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for Diplomes in Diplome %}
+                                <tr>
+                                    <td class="text-center">{{ Diplomes.NomDiplome }}</td>
+                                    <td class="text-center">{{ Diplomes.categorie }}</td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ Diplomes.Id }}">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                    <div class="modal fade" id="exampleModal{{ Diplomes.Id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modification Diplomes</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                            <form method="POST" action="{{ path('diplome_update',{id:Diplomes.Id}) }}" enctype="multipart/form-data">
+                                                <input type="text" value="{{ Diplomes.NomDiplome }}" class="form-control form-control-user mb-2" name="diplome">
+                                                <input type="text" value="{{ Diplomes.categorie }}" class="form-control form-control-user mb-2" name="categorie">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer" style="column-gap: 10px;">
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-success btn-sm">Modifier</button>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                        <a class="btn btn-sm btn-danger" href="{{ path('diplome_delete',{id:Diplomes.Id}) }}"><i class="fa-solid fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div> 
+                
+            </div>
+{% endblock %}

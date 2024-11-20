@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('assets/Login/css/material-kit.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/Login/css/nucleo-icons.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/Login/css/nucleo-svg.css') }}">
+        <link rel="icon" type="image/jpeg" href="{{ asset('Image/logo1.jpeg') }}">
+
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+
+        <script src="{{ asset('assets/Login/js/core/boostrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('assets/Login/js/core/popper.min.js') }}"></script>
+        <script src="{{ asset('assets/Login/js/materiel-kit.js') }}"></script>
+    </body>
+</html>

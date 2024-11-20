@@ -1,0 +1,41 @@
+<div class="row justify-content-center bg-light mx-0 mb-5">
+    <div class="col-lg-11 py-5" id="evenement">
+        <div class="bg-white p-5 my-5 shadow rounded">
+            <h1 class="text-center mb-4 text-uppercase" style="color: #007bff; font-weight: bold;">
+                Actualités
+            </h1>
+            <h5 class="text-center mb-4 text-secondary">
+                Découvrez les dernières actualités organisées par notre établissement
+            </h5>
+
+            <div class="d-flex flex-column mt-5 gap-4">
+                {% for evenements in evenement %}
+                <div class="row align-items-center p-4 shadow-sm rounded bg-white hover-zoom">
+                    <div class="col-md-7 mb-3 mb-md-0">
+                        <h2 class="mb-3" style="color: #343a40;">{{ evenements.nomEvenement }}</h2>
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <i class="bi bi-calendar-event text-primary"></i>
+                            <span class="text-muted">Se dérouleras  le </span>
+                            <strong style="font-size: 16px;">{{ evenements.DateEvenement|date('d-m-Y') }}</strong>
+                            <span class="text-muted"> et auras lieu à</span>
+                            <strong style="font-size: 16px;">{{ evenements.lieuEvenement }}</strong>
+                        </div>
+                        <div>
+                            <p class="description-scroll" style="font-size: 18px; line-height: 1.6;">
+                                 {{ evenements.description }}
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 text-center">
+                        <img src="{{ vich_uploader_asset(evenements, 'FileImage') }}" 
+                             class="img-fluid rounded shadow" 
+                             alt="Image de l'événement" 
+                             style="object-fit: cover; max-height: 300px; width: 100%;">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

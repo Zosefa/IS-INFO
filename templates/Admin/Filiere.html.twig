@@ -1,0 +1,112 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Filiere{% endblock %}
+
+{% block body %}
+        {{ include('partiel/flash.html.twig') }}
+         <div class="mt-4" style="width:90%;margin-left:auto;margin-right:auto">
+                <h4 class="text-center mb-5">Ajouter Les Filieres !</h4>
+                <div class="w-100">
+                {{ form_start(form) }}
+                        <div class="w-100 h-100 d-flex flex-column gap-3">
+                            <div class="d-flex justify-content-between">
+                                <div class="col-md-4">
+                                    {{ form_row(form.NomFiliere) }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ form_row(form.IdNiveaux) }}
+                                </div>
+                                <div class="col-md-4">
+                                    {{ form_row(form.FileImage) }}
+                                </div> 
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="col-md-12"> 
+                                    {{ form_row(form.description) }}
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between">
+                                
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-success">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+                {{ form_end(form) }}
+                </div>
+                 <div class="w-100 mt-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="border text-center">Filiere</th>
+                                <th class="border text-center">description</th>
+                                <th class="border text-center">Niveau d'etude correspondant</th>
+                                <th class="border text-center">image</th>
+                                <th class="border text-center">action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for filieres in filiere %}
+                                <tr>
+                                    <td class="text-center">{{ filieres.NomFiliere }}</td>
+                                    <td class="text-center">{{ filieres.description }}</td>
+                                    {% if filieres.IdNiveaux.Niveaux %}
+                                        <td class="text-center">
+                                            {{ filieres.IdNiveaux.Niveaux }}
+                                        </td>
+                                    {% else %}
+                                        <td class="text-center">
+                                            Aucune niveau rattacher a cela
+                                        </td>
+                                    {% endif %}
+                                    <td class="text-center">
+                                        <img src="{{ vich_uploader_asset(filieres, 'FileImage') }}" class="w-25">
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ filieres.Id }}">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                    <div class="modal fade" id="exampleModal{{ filieres.Id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modification Filiere</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                            <form method="POST" action="{{ path('filiere_update',{id:filieres.Id}) }}" enctype="multipart/form-data">
+                                                <input type="text" value="{{ filieres.NomFiliere }}" class="form-control form-control-user mb-2" name="nom">
+                                                <input type="file" class="form-control form-control-user mb-2" name="file">
+                                                <select class="form-select mb-2" name="niveau">
+                                                    {% for niveau in Niveaux %}
+                                                        {% if  niveau.niveaux ==  filieres.IdNiveaux.Niveaux  %}
+                                                            <option value="{{ niveau.Id }}" selected>{{ niveau.niveaux }}</option>
+                                                        {% else %}
+                                                            <option value="{{ niveau.Id }}">{{ niveau.niveaux }}</option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </select>
+                                                <textarea id="" class="form-control" name="description">{{ filieres.description }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer" style="column-gap: 10px;">
+                                            <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-success btn-sm">Modifier</button>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                        <a class="btn btn-sm btn-danger" href="{{ path('filiere_delete',{id:filieres.Id}) }}"><i class="fa-solid fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div> 
+                
+            </div>
+{% endblock %}

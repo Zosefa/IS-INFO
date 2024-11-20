@@ -1,0 +1,42 @@
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="height: 100vh;">
+    <div class="carousel-indicators">
+        {% for Carousels in Carousel %}
+            <button type="button" 
+                    data-bs-target="#carouselExampleIndicators" 
+                    data-bs-slide-to="{{ loop.index0 }}" 
+                    class="{% if loop.first %}active{% endif %}" 
+                    aria-current="{% if loop.first %}true{% endif %}" 
+                    aria-label="Slide {{ loop.index }}">
+            </button>
+        {% endfor %}
+    </div>
+
+    <div class="carousel-inner">
+        {% for Carousels in Carousel %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}" 
+                 style="background-image: url('{{ vich_uploader_asset(Carousels, 'FileImage') }}');
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        height: 85vh;">
+                <div class="h-100" style="background-color: rgba(0, 0, 0, 0.589);">
+                    <div class="w-50 h-100 m-auto d-flex align-items-center justify-content-center">
+                        <h2 class="text-white text-center wow animated__animated animate__fadeInLeft" 
+                            data-wow-duration="2s" data-wow-offset="10">
+                            {{ Carousels.Mot }}
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

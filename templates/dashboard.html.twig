@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('assets/assets/admin/demo/demo.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/admin/css/now-ui-dashboard.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('bootstrap5/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('Toast/Toast.css') }}">
+        <link rel="icon" type="image/jpeg" href="{{ asset('Image/logo1.jpeg') }}">
+
+    </head>
+    <body>
+        <div class="wrapper ">
+        <div class="sidebar" data-color="blue">
+          <div class="logo">
+            <a href="#" class="simple-text fs-5 text-center">
+              <img  alt="" style="width:15%"/> IS-INFO
+            </a>
+          </div>
+          <div class="sidebar-wrapper" id="sidebar-wrapper">
+              <ul class="nav">
+                <li>
+                  <a href="institut">
+                    <i class="now-ui-icons education_atom"></i>
+                    <p>Institut</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="Evenement">
+                    <i class="now-ui-icons education_atom"></i>
+                    <p>Evènements</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="/niveaux">
+                    <i class="now-ui-icons education_atom"></i>
+                    <p>Niveaux</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="/filiere">
+                    <i class="now-ui-icons education_atom"></i>
+                    <p>filières</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="formation">
+                    <i class="now-ui-icons education_atom"></i>
+                    <p>formations</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="diplome">
+                    <i class="now-ui-icons education_atom"></i>
+                    <p>diplômes</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="Directeur">
+                    <i class="now-ui-icons education_atom"></i>
+                    <p>Directeur</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="/Responsable">
+                    <i class="now-ui-icons ui-1_bell-53"></i>
+                    <p>RESPONSABLE</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="/Carousel">
+                    <i class="now-ui-icons ui-1_bell-53"></i>
+                    <p>Carousel</p>
+                  </a>
+                </li>
+
+                <li class="active-pro">
+                  <a href="{{ path('app_logout') }}">
+                    <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                    <p>Déconnexion</p>
+                  </a>
+                </li>
+              </ul>
+          </div>
+        </div>
+        <div class="main-panel bg-white">
+        
+          {% block body %}{% endblock %}
+        
+        </div>
+      </div>
+
+
+
+
+
+        
+
+        <script src="{{ asset('assets/admin/js/core/boostrap.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/js/core/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/admin/js/now-ui-dashboard.min.js') }}"></script>
+        <script src="{{ asset('bootstrap5/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('fontawesome/js/all.min.js') }}"></script>
+        <script src="{{ asset('Toast/Toast.js') }}"></script>
+    </body>
+</html>

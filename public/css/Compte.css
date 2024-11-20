@@ -1,0 +1,11 @@
+.compte{
+    width:40%;text-decoration:none;color:white;text-transform:Uppercase;font-weight: bold;cursor: pointer;transition: 0.5s;
+}
+.compte:hover{
+    width: 45% !important;
+    height: 80% !important;
+    transition: 0.5s !important;
+    text-decoration: none;
+    color: white;
+    font-size: 20px !important;
+}

@@ -1,0 +1,32 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Profil{% endblock %}
+
+{% block body %}
+{{ include('partiel/flash.html.twig') }}
+    <div class="mt-4" style="width:90%;margin-left:auto;margin-right:auto">
+        <h4 class="text-center mb-3">Responsable !</h4>
+        <div class="w-100 d-flex gap-2 mb-2">
+            <a href="{{ path('responsable') }}" class="btn btn-primary">Profil</a>
+            <a href="{{ path('app_register') }}" class="btn btn-success">Nouveau Responsable</a>
+        </div>
+        <div class="w-100">
+            <form action="{{ path('responsable_update', { 'id': user.id }) }}" method="post" class="w-100">
+                <div class="row d-flex flex-column gap-2" style="row-gap: 10px;">
+                    <div class="col-6">
+                        <input type="email" class="form-control" name="email" style="height: 50px;" placeholder="votre email" value="{{ user.email }}">
+                    </div>
+                    <div class="col-6">
+                        <input type="password" class="form-control" name="password" style="height: 50px;" placeholder="nouveau mot de passe">
+                    </div>
+                    <div class="col-6">
+                        <input type="password" class="form-control" name="confirmer" style="height: 50px;" placeholder="confirmer votre mot de passe">
+                    </div>
+                    <div class="col-6 text-right">
+                        <button class="btn btn-success">Modifier</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

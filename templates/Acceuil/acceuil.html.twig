@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>IS-INFO</title>
+    <link rel="stylesheet" href="{{ asset('assets/acceuil/lib/owlcarousel/assets/owl.carousel.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/acceuil/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bootstrap5/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('wow/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <link rel="icon" type="image/jpeg" href="{{ asset('Image/logo1.jpeg') }}">
+</head>
+<body>
+           
+        <div class="container-fluid p-0 sticky-top">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
+        <a href="#" class="navbar-brand ml-lg-3">
+            <h3 class="m-0 text-uppercase">
+                <img src="{{ vich_uploader_asset(institut, 'FileImage') }}" style="width:25%;" /> IS-INFO
+            </h3>
+        </a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#mobileMenu"
+            aria-controls="mobileMenu"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse d-none d-lg-block" id="navbarCollapse">
+            <div class="navbar-nav mx-auto py-0" style="column-gap:20px !important;">
+                <a href="#acceuil" class="nav-item nav-link scroll-link" style="font-size: 17px">Acceuil</a>
+                <a href="#apropos" class="nav-item nav-link scroll-link" style="font-size: 17px">A propos</a>
+                <a href="#filiere" class="nav-item nav-link scroll-link" style="font-size: 17px">Filières</a>
+                <a href="#diplome" class="nav-item nav-link scroll-link" style="font-size: 17px">Diplômes</a>
+                <a href="#formation" class="nav-item nav-link scroll-link" style="font-size: 17px">Formations</a>
+                <a href="#contact" class="nav-item nav-link scroll-link" style="font-size: 17px">Contact</a>
+                <a href="#evenement" class="nav-item nav-link scroll-link" style="font-size: 17px">Evènements</a>
+            </div>
+            <a href="/connexion" class="btn btn-info" style="background-color:#133FE2 !important;">
+                <i class="fa-solid fa-user text-white"></i>
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="mobileMenuLabel">Menu</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div class="navbar-nav mx-auto py-0">
+            <a href="#acceuil" class="nav-item nav-link scroll-link">Acceuil</a>
+            <a href="#apropos" class="nav-item nav-link scroll-link">A propos</a>
+            <a href="#filiere" class="nav-item nav-link scroll-link">Filière</a>
+            <a href="#diplome" class="nav-item nav-link scroll-link">Diplôme</a>
+            <a href="#formation" class="nav-item nav-link scroll-link">Formations</a>
+            <a href="#contact" class="nav-item nav-link scroll-link">Contact</a>
+            <a href="#evenement" class="nav-item nav-link scroll-link">Evènement</a>
+        </div>
+    </div>
+</div>
+
+
+{# header #}
+        
+{{ include('Acceuil/Tete.html.twig') }}
+
+{# main #}
+
+{{ include('Acceuil/Directeur.html.twig') }}
+
+{# apropos #}
+{{ include('Acceuil/Apropos.html.twig') }}
+
+
+    {# filiere #}
+    {{ include('Acceuil/Filiere.html.twig') }}
+
+    {{ include('Acceuil/Diplome.html.twig') }}
+
+    {{ include('Acceuil/Formation.html.twig') }}
+
+    {{ include('Acceuil/Contact.html.twig') }}
+    
+    {{ include('Acceuil/Actualite.html.twig') }}
+</div>
+    <div class="container-fluid position-relative overlay-top bg-dark text-white-50 py-5" style="margin-top: 10px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 mb-5">
+                    <a href="index.html" class="navbar-brand">
+                        <h6 class="mt-n2 text-uppercase text-white" style="font-weight: bold;">{{ institut.NomInstitut }}</h6>
+                    </a>
+                    <p class="m-0">{{ institut.description }}</p>
+                </div>
+                <div class="col-md-12 mb-5">
+                    <div class="row">
+                        <div class="col-md-4 mb-5">
+                            <h3 class="text-white mb-4">Informations</h3>
+                            <p><i class="fa fa-map-marker-alt mr-2"></i>{{ institut.Siege }}</p>
+                            <p><i class="fa fa-graduation-cap mr-2"></i>{{ institut.Agrement }}</p>
+                            <p><i class="fa fa-phone mr-2"></i>{{ institut.Tel1 }} / {{ institut.Tel2 }}</p>
+                            <p><i class="fa fa-envelope mr-2"></i>{{ institut.email }} / {{ institut.email2 }}</p>
+                            <div class="d-flex justify-content-start mt-4">
+                                <a class="text-muted mr-4 d-flex flex-column align-items-center gap-2 justify-content-center" href="https://www.facebook.com/Isinfo.Institut?locale=fr_FR" target="_blank"><i class="fab fa-2x fa-facebook-f"></i></a>
+                                <a class="text-muted mr-4 d-flex flex-column align-items-center gap-2 justify-content-center" href="https://wa.me/261346470325" target="_blank" rel="noopener noreferrer"><i class="fab fa-2x fa-whatsapp"></i></a>
+                                <a class="text-muted mr-4 d-flex flex-column align-items-center gap-2 justify-content-center" href="https://mail.google.com/mail/u/0/#search/isinfo%40blueline.mg" target="_blank"><i class="fa fa-2x fa-envelope"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-5">
+                            <h3 class="text-white mb-4">Filières</h3>
+                            <div class="d-flex flex-column justify-content-start">
+                                {% for filiereAlls in filiereAll %}
+                                    <p class="text-white-50 mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>{{ filiereAlls.NomFiliere }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-5">
+                            <h3 class="text-white mb-4">Diplômes</h3>
+                            <div class="d-flex flex-column justify-content-start">
+                                {% for diplomes in diplome %}
+                                <p class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>{{ diplomes.nomDiplome }}</p>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid bg-dark text-white-50 border-top py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="container-fluid"> 
+            <div class="row">
+                <div class="col-md-12 text-center text-md-left mb-3 mb-md-0">
+                    <p class="m-auto d-flex">Copyright &copy; &nbsp
+                        <a class="text-muted mr-4 d-flex flex-column align-items-center gap-2 justify-content-center" href="https://mail.google.com/mail/u/0/#search/zosephatoky@gmail.com" target="_blank">zosephatoky@gmail.com</a> / &nbsp<a class="text-muted mr-4 d-flex flex-column align-items-center gap-2 justify-content-center" href="https://mail.google.com/mail/u/0/#search/razafindrakotomickael77@gmail.com" target="_blank">razafindrakotomickael77@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="#" class="btn btn-sm rounded-0 btn-lg-square back-to-top d-flex align-items-center justify-content-center scroll-link" style="background-color:#133FE2 !important;border:none !important;"><i class="fa fa-angle-double-up fs-5 text-white"></i></a>
+
+
+      <script src="{{ asset('assets/acceuil/js/main.js') }}"></script>
+      <script src="{{ asset('assets/acceuil/lib/owlcarousel/owl.carousel.min.js') }}') }}"></script>
+      <script src="{{ asset('bootstrap5/js/bootstrap.min.js') }}"></script>
+      <script src="{{ asset('wow/wow.min.js') }}"></script>
+      <script src="{{ asset('js/script.js') }}"></script>
+</body>
+</html>

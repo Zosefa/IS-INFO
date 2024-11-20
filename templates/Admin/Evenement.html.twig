@@ -1,0 +1,125 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %}Evenement{% endblock %}
+
+{% block body %}
+{{ include('partiel/flash.html.twig') }}
+         <div class="mt-4" style="width:90%;margin-left:auto;margin-right:auto">
+                <h4 class="text-center mb-5">Ajouter Les Evenements !</h4>
+                <div class="w-100">
+                {{ form_start(form) }}
+                        <div class="w-100 h-100 d-flex flex-column gap-3">
+                            <div class="d-flex justify-content-between">
+                                <div class="col-md-6">
+                                    {{ form_row(form.NomEvenement) }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form_row(form.DateEvenement) }}
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="col-md-6">
+                                    {{ form_row(form.LieuEvenement) }}
+                                </div>
+                                <div class="col-md-6">
+                                    {{ form_row(form.FileImage) }}
+                                </div> 
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="col-md-12"> 
+                                    {{ form_row(form.description) }}
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between">
+                                <div class="col-md-4">
+                                    <button type="submit" class="btn btn-success">Ajouter</button>
+                                </div>
+                            </div>
+                        </div>
+                {{ form_end(form) }}
+                </div>
+                 <div class="w-100 mt-3">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="border text-center fs-6">Evenement</th>
+                                <th class="border text-center fs-6">Date de deroulement</th>
+                                <th class="border text-center fs-6">Lieu de deroulement</th>
+                                <th class="border text-center fs-6">description</th>
+                                <th class="border text-center fs-6">image</th>
+                                <th class="border text-center fs-6">action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for Evenements in Evenement %}
+                                <tr>
+                                    <td class="text-center">{{ Evenements.NomEvenement }}</td>
+                                    <td class="text-center">{{ Evenements.DateEvenement|date('d-m-Y') }}</td> 
+                                    <td class="text-center">{{ Evenements.LieuEvenement }}</td>
+                                    <td class="text-center">
+                                    
+                                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ Evenements.id }}">
+                                            <i class="fa-solid fa-ellipsis"></i>
+                                            </button>
+
+                                            <div class="modal fade" id="exampleModal-{{ Evenements.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Description</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    {{ Evenements.description }}
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+
+                                    </td>
+                                    <td class="text-center" style="width: 10rem !important;">
+                                        <img src="{{ vich_uploader_asset(Evenements, 'FileImage') }}" class="w-75">
+                                    </td>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ Evenements.Id }}">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                        <div class="modal fade" id="exampleModal{{ Evenements.Id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Modification Evenement</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container">
+                                                    <form method="POST" action="{{ path('evenement_update',{id:Evenements.Id}) }}" enctype="multipart/form-data">
+                                                        <input type="text" value="{{ Evenements.NomEvenement }}" class="form-control form-control-user mb-2" name="nom">
+                                                        <input type="file" class="form-control form-control-user mb-2" name="file">
+                                                        <input type="date" value="{{ Evenements.DateEvenement|date('Y-m-d') }}" class="form-control form-control-user mb-2" name="date">
+                                                        <input type="text" value="{{ Evenements.LieuEvenement }}" class="form-control form-control-user mb-2" name="lieu">
+                                                        <textarea id="" class="form-control" name="description">{{ Evenements.description }}</textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer" style="column-gap: 10px;">
+                                                    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-success btn-sm">Modifier</button>
+                                                    </form>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a class="btn btn-sm btn-danger" href="{{ path('evenement_delete',{id:Evenements.Id}) }}"><i class="fa-solid fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %} 
+                        </tbody>
+                    </table>
+                </div> 
+                
+            </div>
+{% endblock %}
